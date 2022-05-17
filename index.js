@@ -16,10 +16,11 @@ app.use(express.json());
 
 app.post("/register", (req, res) => {
     const { name } = req.body;
+    const { usuario } = req.body;
 
-    let SQL = "INSERT INTO pessoas ( name ) VALUES (?)";
+    let SQL = "INSERT INTO pessoas ( name, usuario ) VALUES (?, ?)";
 
-    db.query(SQL, [name], (err, result) => {
+    db.query(SQL, [name, usuario], (err, result) => {
         console.log(err)
     })
 });
